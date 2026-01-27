@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -162,6 +161,12 @@ color: white;
 
 .mode-btn.poils{
 background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+color: white;
+}
+
+/* Nouveau thème */
+.mode-btn.regles{
+background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);
 color: white;
 }
 
@@ -399,7 +404,7 @@ body{ padding: 5px; font-size: 15px; }
 .header h1{ font-size: 1.35em; margin-bottom: 5px; }
 .subtitle{ font-size: 0.9em; }
 .game-content{ padding: 15px; }
-.mode-selector{ flex-direction: row; }
+.mode-selector{ flex-direction: row; flex-wrap: wrap; }
 .mode-btn{ min-height: 50px; font-size: 0.95em; flex: 1; }
 .header-waves{ height: 70px; }
 }
@@ -422,6 +427,7 @@ body{ padding: 5px; font-size: 15px; }
 <div class="mode-selector">
 <button class="mode-btn menstruation" onclick="selectMode('menstruation')">Menstruations</button>
 <button class="mode-btn poils" onclick="selectMode('poils')">Pilosité corporelle</button>
+<button class="mode-btn regles" onclick="selectMode('regles')">Règles invisibles</button>
 </div>
 
 <div class="progress">
@@ -607,6 +613,121 @@ explanation: "La perception de la pilosité féminine a énormément varié selo
 }
 ];
 
+/* Nouveau quiz : éducation genrée (format discussion) */
+const reglesQuestions = [
+{
+question: "Un enfant tombe et pleure. Sans autre information, quelle interprétation est la plus fréquente dans la société quand on pense que c’est…",
+answers: [
+"…une fille : « elle a peur » / …un garçon : « il est en colère »",
+"…une fille : « il est en colère » / …un garçon : « il a peur »",
+"…une fille : « il se fait remarquer » / …un garçon : « il est timide »",
+"On interprète toujours exactement de la même façon"
+],
+correct: 0,
+explanation: "Quand on attribue un genre, on a tendance à changer notre lecture : la peur est plus “autorisée” chez les filles, la colère plus “tolérée” chez les garçons. Ce n’est pas naturel : c’est un réflexe social (idée proche des travaux de Condry & Condry)."
+},
+{
+question: "À qui dit-on le plus souvent « Fais attention ! » quand il/elle grimpe, court, prend des risques ?",
+answers: [
+"Plutôt aux filles",
+"Plutôt aux garçons",
+"À tout le monde pareil",
+"Seulement aux plus jeunes"
+],
+correct: 0,
+explanation: "On protège souvent davantage les filles et on encourage davantage les garçons à “oser”. À force, cela peut construire plus d’assurance chez certains, plus de prudence ou d’auto-censure chez d’autres."
+},
+{
+question: "Quelle phrase est la plus susceptible d’être adressée à un garçon ?",
+answers: [
+"« Sois sage. »",
+"« Arrête de pleurer. »",
+"« Tu es jolie aujourd’hui. »",
+"« Tu as été très discrète. »"
+],
+correct: 1,
+explanation: "L’injonction « un garçon ne pleure pas » (ou « arrête de pleurer ») est très répandue : elle n’empêche pas de ressentir, mais elle apprend à cacher les émotions."
+},
+{
+question: "Quel compliment est le plus souvent donné aux filles à l’école (même quand elles ont de bons résultats) ?",
+answers: [
+"« Tu es brillante. »",
+"« Tu as du talent. »",
+"« Tu es sérieuse / appliquée. »",
+"« Tu es audacieuse. »"
+],
+correct: 2,
+explanation: "Les filles sont souvent valorisées pour le “sérieux”, l’application, la conformité. Les garçons sont plus facilement valorisés pour l’audace ou la “brillance”. Ces différences, répétées, influencent la confiance et l’orientation."
+},
+{
+question: "Les jouets et activités proposés aux enfants…",
+answers: [
+"Sont neutres : ils n’ont pas d’effet",
+"Orientent vers des rôles et des compétences différentes",
+"Sont uniquement une question de goûts individuels",
+"N’influencent que l’enfance, pas la suite"
+],
+correct: 1,
+explanation: "Poupées/dînette (soin, intérieur) vs construction/voitures (action, technique) : ce n’est pas “mal”, mais cela peut orienter les compétences valorisées et ce que l’enfant s’autorise à aimer."
+},
+{
+question: "À notes équivalentes, pourquoi certaines filles hésitent davantage à choisir une filière très sélective ?",
+answers: [
+"Parce qu’elles aiment moins travailler",
+"Parce qu’elles manquent forcément de capacités",
+"À cause de l’auto-censure et du sentiment de légitimité",
+"Parce que les filières sélectives n’existent pas pour elles"
+],
+correct: 2,
+explanation: "L’auto-censure, c’est se limiter avant même d’essayer (« je ne suis pas sûre », « je ne suis pas faite pour ça »). Ce n’est pas une fatalité : c’est souvent lié aux attentes, aux modèles et à la confiance construite."
+},
+{
+question: "Parmi ces affirmations, laquelle est la plus juste ?",
+answers: [
+"« Les stéréotypes sont inoffensifs : c’est juste de l’humour. »",
+"« Les stéréotypes influencent nos choix même quand on pense être libre. »",
+"« Les stéréotypes ne concernent que les filles. »",
+"« Les stéréotypes disparaissent à l’adolescence. »"
+],
+correct: 1,
+explanation: "Les stéréotypes peuvent agir comme des “petites règles” invisibles : ils influencent les goûts, les émotions autorisées, la place qu’on prend, et même les choix d’orientation."
+},
+{
+question: "Quand une fille « prend de la place » (parle fort, s’impose), elle est plus souvent qualifiée de…",
+answers: [
+"« Leader »",
+"« Autoritaire / agaçante »",
+"« Drôle »",
+"« Courageuse »"
+],
+correct: 1,
+explanation: "Le même comportement peut être jugé différemment selon le genre. Repérer ces doubles standards aide à comprendre comment se construisent la conformité et l’auto-censure."
+},
+{
+question: "Quelle situation illustre le mieux une « règle implicite » (non écrite) ?",
+answers: [
+"« Les règles du collège sont affichées à l’entrée. »",
+"« On attend qu’un garçon fasse le premier pas. »",
+"« Un contrôle surprise est annoncé la veille. »",
+"« Un professeur donne une consigne sur la feuille. »"
+],
+correct: 1,
+explanation: "Une règle implicite, c’est une attente sociale non écrite, mais très présente. Les règles implicites sur le genre peuvent peser sur les comportements, les relations et l’estime de soi."
+},
+{
+question: "À la fin, l’objectif de ce quiz est surtout de…",
+answers: [
+"« Prouver que tout le monde se trompe »",
+"« Faire la morale »",
+"« Repérer des réflexes et en discuter sans juger »",
+"« Donner des leçons de vocabulaire »"
+],
+correct: 2,
+explanation: "Le but est de mettre en lumière des réflexes sociaux et d’en discuter : comprendre comment on devient “fille” ou “garçon” selon les attentes, pour mieux s’autoriser à choisir et à être soi-même."
+}
+];
+];
+
 function selectMode(mode){
 currentMode = mode;
 currentQuestionIndex = 0;
@@ -616,7 +737,10 @@ score = 0;
 document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
 document.querySelector(`.mode-btn.${mode}`).classList.add('active');
 
-questions = mode === 'menstruation' ? menstruationQuestions : poilsQuestions;
+questions =
+mode === 'menstruation' ? menstruationQuestions :
+mode === 'poils' ? poilsQuestions :
+reglesQuestions;
 
 document.getElementById('finalScore').classList.remove('show');
 
@@ -818,4 +942,3 @@ lastTouchEnd = now;
 </script>
 </body>
 </html>
-
