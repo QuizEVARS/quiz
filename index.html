@@ -1,819 +1,943 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>On en parle ? · Quiz EVARS</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<title>On en parle ? · Quiz EVARS</title>
 
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body{
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      min-height: 100vh;
-      padding: 10px;
-      font-size: 16px;
-      background:
-        radial-gradient(900px 500px at 15% 10%, rgba(255,255,255,0.14), transparent 60%),
-        radial-gradient(900px 500px at 85% 30%, rgba(255,255,255,0.10), transparent 60%),
-        linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-    }
+body{
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+min-height: 100vh;
+padding: 10px;
+font-size: 16px;
+background:
+radial-gradient(900px 500px at 15% 10%, rgba(255,255,255,0.14), transparent 60%),
+radial-gradient(900px 500px at 85% 30%, rgba(255,255,255,0.10), transparent 60%),
+linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+}
 
-    .container{
-      max-width: 100%;
-      margin: 0 auto;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 14px 36px rgba(0,0,0,0.18);
-      overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.06);
-    }
+.container{
+max-width: 100%;
+margin: 0 auto;
+background: white;
+border-radius: 16px;
+box-shadow: 0 14px 36px rgba(0,0,0,0.18);
+overflow: hidden;
+border: 1px solid rgba(0,0,0,0.06);
+}
 
-    .header{
-      position: relative;
-      padding: 28px 16px 70px;
-      text-align: center;
-      color: white;
-      overflow: hidden;
-      background:
-        radial-gradient(900px 420px at 20% 10%, rgba(255,255,255,0.18), transparent 55%),
-        radial-gradient(700px 380px at 85% 35%, rgba(255,255,255,0.12), transparent 60%),
-        linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-    }
+.header{
+position: relative;
+padding: 28px 16px 70px;
+text-align: center;
+color: white;
+overflow: hidden;
+background:
+radial-gradient(900px 420px at 20% 10%, rgba(255,255,255,0.18), transparent 55%),
+radial-gradient(700px 380px at 85% 35%, rgba(255,255,255,0.12), transparent 60%),
+linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+}
 
-    .header::before{
-      content:"";
-      position:absolute;
-      width: 520px;
-      height: 520px;
-      left: -180px;
-      top: -240px;
-      border-radius: 999px;
-      background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 60%);
-      filter: blur(2px);
-      pointer-events:none;
-    }
+.header::before{
+content:"";
+position:absolute;
+width: 520px;
+height: 520px;
+left: -180px;
+top: -240px;
+border-radius: 999px;
+background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 60%);
+filter: blur(2px);
+pointer-events:none;
+}
 
-    .header::after{
-      content:"";
-      position:absolute;
-      width: 520px;
-      height: 520px;
-      right: -220px;
-      top: -260px;
-      border-radius: 999px;
-      background: radial-gradient(circle, rgba(255,255,255,0.14), transparent 62%);
-      pointer-events:none;
-    }
+.header::after{
+content:"";
+position:absolute;
+width: 520px;
+height: 520px;
+right: -220px;
+top: -260px;
+border-radius: 999px;
+background: radial-gradient(circle, rgba(255,255,255,0.14), transparent 62%);
+pointer-events:none;
+}
 
-    .header-inner{
-      position: relative;
-      z-index: 2;
-      max-width: 720px;
-      margin: 0 auto;
-    }
+.header-inner{
+position: relative;
+z-index: 2;
+max-width: 720px;
+margin: 0 auto;
+}
 
-    .header-badge{
-      display: inline-block;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-weight: 900;
-      letter-spacing: 1.2px;
-      font-size: 0.78em;
-      margin-bottom: 10px;
-      background: rgba(255,255,255,0.16);
-      border: 1px solid rgba(255,255,255,0.28);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.16);
-      backdrop-filter: blur(6px);
-    }
+.header-badge{
+display: inline-block;
+padding: 8px 12px;
+border-radius: 999px;
+font-weight: 900;
+letter-spacing: 1.2px;
+font-size: 0.78em;
+margin-bottom: 10px;
+background: rgba(255,255,255,0.16);
+border: 1px solid rgba(255,255,255,0.28);
+box-shadow: 0 10px 20px rgba(0,0,0,0.16);
+backdrop-filter: blur(6px);
+}
 
-    .header h1{
-      font-size: 2.05em;
-      margin-bottom: 10px;
-      letter-spacing: 0.6px;
-      text-shadow: 0 10px 24px rgba(0,0,0,0.30);
-    }
+.header h1{
+font-size: 2.05em;
+margin-bottom: 10px;
+letter-spacing: 0.6px;
+text-shadow: 0 10px 24px rgba(0,0,0,0.30);
+}
 
-    .subtitle{
-      font-size: 1.02em;
-      opacity: 0.92;
-      line-height: 1.4;
-      text-shadow: 0 8px 18px rgba(0,0,0,0.22);
-    }
+.subtitle{
+font-size: 1.02em;
+opacity: 0.92;
+line-height: 1.4;
+text-shadow: 0 8px 18px rgba(0,0,0,0.22);
+}
 
-    .header-waves{
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -1px;
-      width: 100%;
-      height: 90px;
-      z-index: 1;
-    }
+.header-waves{
+position: absolute;
+left: 0;
+right: 0;
+bottom: -1px;
+width: 100%;
+height: 90px;
+z-index: 1;
+}
 
-    .header-waves path{
-      fill: rgba(255,255,255,0.10);
-    }
+.header-waves path{
+fill: rgba(255,255,255,0.10);
+}
 
-    .game-content{ padding: 20px 15px; }
+.game-content{ padding: 20px 15px; }
 
-    .mode-selector{
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-bottom: 22px;
-    }
+.mode-selector{
+display: flex;
+flex-direction: column;
+gap: 14px;
+margin-bottom: 22px;
+}
 
-    .mode-btn{
-      position: relative;
-      overflow: hidden;
-      padding: 18px 20px;
-      border: none;
-      border-radius: 12px;
-      font-size: 1.08em;
-      font-weight: 900;
-      cursor: pointer;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      min-height: 60px;
-      text-align: left;
-      display: flex;
-      align-items: center;
-      -webkit-tap-highlight-color: transparent;
-    }
+.mode-btn{
+position: relative;
+overflow: hidden;
+padding: 18px 20px;
+border: none;
+border-radius: 12px;
+font-size: 1.08em;
+font-weight: 900;
+cursor: pointer;
+transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+text-transform: uppercase;
+letter-spacing: 1px;
+min-height: 60px;
+text-align: left;
+display: flex;
+align-items: center;
+-webkit-tap-highlight-color: transparent;
+}
 
-    .mode-btn::after{
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 8px;
-      opacity: 0.9;
-      background: rgba(255,255,255,0.45);
-    }
+.mode-btn::after{
+content: "";
+position: absolute;
+left: 0;
+top: 0;
+bottom: 0;
+width: 8px;
+opacity: 0.9;
+background: rgba(255,255,255,0.45);
+}
 
-    .mode-btn.menstruation{
-      background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
-      color: white;
-    }
+.mode-btn.menstruation{
+background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
+color: white;
+}
 
-    .mode-btn.poils{
-      background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
-      color: white;
-    }
+.mode-btn.poils{
+background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+color: white;
+}
 
-    .mode-btn:active{ transform: scale(0.985); filter: brightness(0.98); }
+/* Nouveau thème */
+.mode-btn.regles{
+background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);
+color: white;
+}
 
-    .mode-btn.active{
-      transform: scale(1.015);
-      box-shadow: 0 12px 22px rgba(0,0,0,0.22);
-    }
+.mode-btn:active{ transform: scale(0.985); filter: brightness(0.98); }
 
-    .progress{
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin: 18px 0 20px;
-      padding: 15px;
-      background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
-      border-radius: 12px;
-      border: 1px solid rgba(0,0,0,0.06);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.07);
-    }
+.mode-btn.active{
+transform: scale(1.015);
+box-shadow: 0 12px 22px rgba(0,0,0,0.22);
+}
 
-    .progress-info{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.9em;
-      font-weight: 800;
-      color: #2c3e50;
-      gap: 12px;
-    }
+.progress{
+display: flex;
+flex-direction: column;
+gap: 10px;
+margin: 18px 0 20px;
+padding: 15px;
+background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+border-radius: 12px;
+border: 1px solid rgba(0,0,0,0.06);
+box-shadow: 0 8px 18px rgba(0,0,0,0.07);
+}
 
-    .progress-bar{
-      height: 10px;
-      background: #dedede;
-      border-radius: 6px;
-      overflow: hidden;
-      box-shadow: inset 0 2px 6px rgba(0,0,0,0.10);
-    }
+.progress-info{
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-size: 0.9em;
+font-weight: 800;
+color: #2c3e50;
+gap: 12px;
+}
 
-    .progress-fill{
-      height: 100%;
-      background: linear-gradient(90deg, #3498db, #2c3e50);
-      width: 0%;
-      transition: width 0.45s ease;
-    }
+.progress-bar{
+height: 10px;
+background: #dedede;
+border-radius: 6px;
+overflow: hidden;
+box-shadow: inset 0 2px 6px rgba(0,0,0,0.10);
+}
 
-    .question-card{
-      background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
-      border-radius: 14px;
-      padding: 22px 18px;
-      margin-bottom: 18px;
-      border-left: 7px solid #3498db;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.10);
-      display: none;
-    }
+.progress-fill{
+height: 100%;
+background: linear-gradient(90deg, #3498db, #2c3e50);
+width: 0%;
+transition: width 0.45s ease;
+}
 
-    .question-card.active{
-      display: block;
-      animation: slideIn 0.35s ease-out;
-    }
+.question-card{
+background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+border-radius: 14px;
+padding: 22px 18px;
+margin-bottom: 18px;
+border-left: 7px solid #3498db;
+box-shadow: 0 12px 24px rgba(0,0,0,0.10);
+display: none;
+}
 
-    @keyframes slideIn{
-      from{ opacity: 0; transform: translateY(-8px); }
-      to{ opacity: 1; transform: translateY(0); }
-    }
+.question-card.active{
+display: block;
+animation: slideIn 0.35s ease-out;
+}
 
-    .question{
-      font-size: 1.18em;
-      font-weight: 750;
-      color: #2c3e50;
-      margin-bottom: 18px;
-      line-height: 1.45;
-    }
+@keyframes slideIn{
+from{ opacity: 0; transform: translateY(-8px); }
+to{ opacity: 1; transform: translateY(0); }
+}
 
-    .answers{
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
+.question{
+font-size: 1.18em;
+font-weight: 750;
+color: #2c3e50;
+margin-bottom: 18px;
+line-height: 1.45;
+}
 
-    .answer{
-      padding: 18px 16px;
-      border: 2px solid #dcdcdc;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
-      font-size: 1em;
-      background: white;
-      min-height: 52px;
-      display: flex;
-      align-items: center;
-      line-height: 1.32;
-      -webkit-tap-highlight-color: transparent;
-    }
+.answers{
+display: flex;
+flex-direction: column;
+gap: 14px;
+}
 
-    .answer:hover{
-      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
-      border-color: #bfc9d1;
-    }
+.answer{
+padding: 18px 16px;
+border: 2px solid #dcdcdc;
+border-radius: 12px;
+cursor: pointer;
+transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+font-size: 1em;
+background: white;
+min-height: 52px;
+display: flex;
+align-items: center;
+line-height: 1.32;
+-webkit-tap-highlight-color: transparent;
+}
 
-    .answer:active{
-      transform: scale(0.985);
-      background: #f3fbff;
-    }
+.answer:hover{
+box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+border-color: #bfc9d1;
+}
 
-    .answer.correct{
-      background: #d4edda;
-      border-color: #28a745;
-      color: #155724;
-    }
+.answer:active{
+transform: scale(0.985);
+background: #f3fbff;
+}
 
-    .answer.incorrect{
-      background: #f8d7da;
-      border-color: #dc3545;
-      color: #721c24;
-    }
+.answer.correct{
+background: #d4edda;
+border-color: #28a745;
+color: #155724;
+}
 
-    .explanation{
-      margin-top: 18px;
-      padding: 15px;
-      background: #e8f4f8;
-      border-radius: 12px;
-      border-left: 5px solid #17a2b8;
-      display: none;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.06);
-    }
+.answer.incorrect{
+background: #f8d7da;
+border-color: #dc3545;
+color: #721c24;
+}
 
-    .explanation.show{
-      display: block;
-      animation: fadeIn 0.35s ease-in;
-    }
+.explanation{
+margin-top: 18px;
+padding: 15px;
+background: #e8f4f8;
+border-radius: 12px;
+border-left: 5px solid #17a2b8;
+display: none;
+box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+}
 
-    @keyframes fadeIn{ from{ opacity: 0; } to{ opacity: 1; } }
+.explanation.show{
+display: block;
+animation: fadeIn 0.35s ease-in;
+}
 
-    .explanation h4{
-      color: #17a2b8;
-      margin-bottom: 8px;
-      font-size: 1.08em;
-      font-weight: 900;
-    }
+@keyframes fadeIn{ from{ opacity: 0; } to{ opacity: 1; } }
 
-    .explanation p{ line-height: 1.42; font-size: 0.95em; }
+.explanation h4{
+color: #17a2b8;
+margin-bottom: 8px;
+font-size: 1.08em;
+font-weight: 900;
+}
 
-    .navigation{
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      margin-top: 22px;
-    }
+.explanation p{ line-height: 1.42; font-size: 0.95em; }
 
-    .nav-btn{
-      padding: 15px 20px;
-      border: none;
-      border-radius: 10px;
-      font-size: 1em;
-      cursor: pointer;
-      transition: transform 0.15s ease, filter 0.15s ease;
-      min-height: 50px;
-      flex: 1;
-      font-weight: 850;
-      -webkit-tap-highlight-color: transparent;
-    }
+.navigation{
+display: flex;
+justify-content: space-between;
+gap: 10px;
+margin-top: 22px;
+}
 
-    .nav-btn.prev{
-      background: linear-gradient(135deg, #6c757d, #5b646b);
-      color: white;
-    }
+.nav-btn{
+padding: 15px 20px;
+border: none;
+border-radius: 10px;
+font-size: 1em;
+cursor: pointer;
+transition: transform 0.15s ease, filter 0.15s ease;
+min-height: 50px;
+flex: 1;
+font-weight: 850;
+-webkit-tap-highlight-color: transparent;
+}
 
-    .nav-btn.next{
-      background: linear-gradient(135deg, #3498db, #2980b9);
-      color: white;
-    }
+.nav-btn.prev{
+background: linear-gradient(135deg, #6c757d, #5b646b);
+color: white;
+}
 
-    .nav-btn:active{ transform: scale(0.985); filter: brightness(0.98); }
-    .nav-btn:disabled{ opacity: 0.55; cursor: not-allowed; transform: none; filter: none; }
+.nav-btn.next{
+background: linear-gradient(135deg, #3498db, #2980b9);
+color: white;
+}
 
-    .final-score{
-      text-align: center;
-      padding: 30px 20px;
-      background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-      color: white;
-      border-radius: 14px;
-      margin: 20px 0;
-      display: none;
-      box-shadow: 0 14px 30px rgba(0,0,0,0.18);
-    }
+.nav-btn:active{ transform: scale(0.985); filter: brightness(0.98); }
+.nav-btn:disabled{ opacity: 0.55; cursor: not-allowed; transform: none; filter: none; }
 
-    .final-score.show{ display: block; animation: bounceIn 0.6s ease-out; }
+.final-score{
+text-align: center;
+padding: 30px 20px;
+background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+color: white;
+border-radius: 14px;
+margin: 20px 0;
+display: none;
+box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+}
 
-    @keyframes bounceIn{
-      0%{ opacity: 0; transform: scale(0.82); }
-      50%{ opacity: 1; transform: scale(1.05); }
-      70%{ transform: scale(0.98); }
-      100%{ transform: scale(1); }
-    }
+.final-score.show{ display: block; animation: bounceIn 0.6s ease-out; }
 
-    .final-score h2{ font-size: 1.5em; margin-bottom: 15px; }
-    .final-score p{ line-height: 1.4; margin-bottom: 20px; }
+@keyframes bounceIn{
+0%{ opacity: 0; transform: scale(0.82); }
+50%{ opacity: 1; transform: scale(1.05); }
+70%{ transform: scale(0.98); }
+100%{ transform: scale(1); }
+}
 
-    .restart-btn{
-      background: white;
-      color: #2c3e50;
-      border: 2px solid white;
-      padding: 15px 25px;
-      border-radius: 26px;
-      font-size: 1em;
-      font-weight: 900;
-      cursor: pointer;
-      transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
-      min-height: 50px;
-      -webkit-tap-highlight-color: transparent;
-      margin: 6px 4px;
-      box-shadow: 0 10px 18px rgba(0,0,0,0.15);
-    }
+.final-score h2{ font-size: 1.5em; margin-bottom: 15px; }
+.final-score p{ line-height: 1.4; margin-bottom: 20px; }
 
-    .restart-btn:active{ transform: scale(0.985); background: #2c3e50; color: white; }
+.restart-btn{
+background: white;
+color: #2c3e50;
+border: 2px solid white;
+padding: 15px 25px;
+border-radius: 26px;
+font-size: 1em;
+font-weight: 900;
+cursor: pointer;
+transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+min-height: 50px;
+-webkit-tap-highlight-color: transparent;
+margin: 6px 4px;
+box-shadow: 0 10px 18px rgba(0,0,0,0.15);
+}
 
-    @media (max-width: 480px){
-      body{ padding: 5px; font-size: 15px; }
-      .header h1{ font-size: 1.65em; }
-      .question{ font-size: 1.1em; }
-      .answer{ font-size: 0.95em; padding: 16px 12px; }
-      .mode-btn{ font-size: 1em; padding: 16px 15px; }
-    }
+.restart-btn:active{ transform: scale(0.985); background: #2c3e50; color: white; }
 
-    @media (max-width: 360px){
-      .game-content{ padding: 15px 10px; }
-      .question{ font-size: 1.05em; }
-      .answer{ font-size: 0.9em; }
-    }
+@media (max-width: 480px){
+body{ padding: 5px; font-size: 15px; }
+.header h1{ font-size: 1.65em; }
+.question{ font-size: 1.1em; }
+.answer{ font-size: 0.95em; padding: 16px 12px; }
+.mode-btn{ font-size: 1em; padding: 16px 15px; }
+}
 
-    @media (max-height: 500px) and (orientation: landscape){
-      .header{ padding: 15px 12px 54px; }
-      .header h1{ font-size: 1.35em; margin-bottom: 5px; }
-      .subtitle{ font-size: 0.9em; }
-      .game-content{ padding: 15px; }
-      .mode-selector{ flex-direction: row; }
-      .mode-btn{ min-height: 50px; font-size: 0.95em; flex: 1; }
-      .header-waves{ height: 70px; }
-    }
-  </style>
+@media (max-width: 360px){
+.game-content{ padding: 15px 10px; }
+.question{ font-size: 1.05em; }
+.answer{ font-size: 0.9em; }
+}
+
+@media (max-height: 500px) and (orientation: landscape){
+.header{ padding: 15px 12px 54px; }
+.header h1{ font-size: 1.35em; margin-bottom: 5px; }
+.subtitle{ font-size: 0.9em; }
+.game-content{ padding: 15px; }
+.mode-selector{ flex-direction: row; flex-wrap: wrap; }
+.mode-btn{ min-height: 50px; font-size: 0.95em; flex: 1; }
+.header-waves{ height: 70px; }
+}
+</style>
 </head>
 
 <body>
-  <div class="container">
-    <div class="header">
-      <div class="header-inner">
-        <h1>On en parle ?</h1>
-        <p class="subtitle">Petits quiz pour questionner les idées reçues !</p>
-      </div>
-      <svg class="header-waves" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M0,120 C150,190 350,20 600,90 C850,160 980,40 1200,110 L1200,200 L0,200 Z"></path>
-      </svg>
-    </div>
+<div class="container">
+<div class="header">
+<div class="header-inner">
+<h1>On en parle ?</h1>
+<p class="subtitle">Petits quiz pour questionner les idées reçues !</p>
+</div>
+<svg class="header-waves" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0,120 C150,190 350,20 600,90 C850,160 980,40 1200,110 L1200,200 L0,200 Z"></path>
+</svg>
+</div>
 
-    <div class="game-content">
-      <div class="mode-selector">
-        <button class="mode-btn menstruation" onclick="selectMode('menstruation')">Menstruations</button>
-        <button class="mode-btn poils" onclick="selectMode('poils')">Pilosité corporelle</button>
-      </div>
+<div class="game-content">
+<div class="mode-selector">
+<button class="mode-btn menstruation" onclick="selectMode('menstruation')">Menstruations</button>
+<button class="mode-btn poils" onclick="selectMode('poils')">Pilosité corporelle</button>
+<button class="mode-btn regles" onclick="selectMode('regles')">Règles invisibles</button>
+</div>
 
-      <div class="progress">
-        <div class="progress-info">
-          <span id="questionCounter">Sélectionnez un thème pour commencer</span>
-          <span class="score-display" id="scoreDisplay">Score: 0/0</span>
-        </div>
-        <div class="progress-bar">
-          <div class="progress-fill" id="progressFill"></div>
-        </div>
-      </div>
+<div class="progress">
+<div class="progress-info">
+<span id="questionCounter">Sélectionnez un thème pour commencer</span>
+<span class="score-display" id="scoreDisplay">Score: 0/0</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" id="progressFill"></div>
+</div>
+</div>
 
-      <div id="questionsContainer"></div>
+<div id="questionsContainer"></div>
 
-      <div class="final-score" id="finalScore">
-        <h2 id="finalTitle">Résultats</h2>
-        <p id="finalMessage"></p>
+<div class="final-score" id="finalScore">
+<h2 id="finalTitle">Résultats</h2>
+<p id="finalMessage"></p>
 
-        <button class="restart-btn" onclick="restartGame()">Recommencer</button>
-        <button class="restart-btn" onclick="toggleReview()">Revoir mes réponses</button>
+<button class="restart-btn" onclick="restartGame()">Recommencer</button>
+<button class="restart-btn" onclick="toggleReview()">Revoir mes réponses</button>
 
-        <div id="reviewContainer" style="display:none; margin-top:20px; text-align:left;"></div>
-      </div>
+<div id="reviewContainer" style="display:none; margin-top:20px; text-align:left;"></div>
+</div>
 
-      <div class="navigation">
-        <button class="nav-btn prev" id="prevBtn" onclick="previousQuestion()" disabled>← Précédent</button>
-        <button class="nav-btn next" id="nextBtn" onclick="nextQuestion()" disabled>Suivant →</button>
-      </div>
-    </div>
-  </div>
+<div class="navigation">
+<button class="nav-btn prev" id="prevBtn" onclick="previousQuestion()" disabled>← Précédent</button>
+<button class="nav-btn next" id="nextBtn" onclick="nextQuestion()" disabled>Suivant →</button>
+</div>
+</div>
+</div>
 
-  <script>
-    let currentMode = '';
-    let currentQuestionIndex = 0;
-    let score = 0;
-    let questions = [];
-    let userAnswers = [];
+<script>
+let currentMode = '';
+let currentQuestionIndex = 0;
+let score = 0;
+let questions = [];
+let userAnswers = [];
 
-    const menstruationQuestions = [
-      {
-        question: "Quel est l'âge moyen des premières règles en France ?",
-        answers: ["10 ans", "12-13 ans", "15 ans", "16 ans"],
-        correct: 1,
-        explanation: "L'âge moyen des premières règles (ménarche) en France est de 12-13 ans, mais il peut varier de 9 à 16 ans selon chaque personne. Cette variation est parfaitement normale et dépend de facteurs génétiques, nutritionnels et environnementaux."
-      },
-      {
-        question: "Combien de temps dure en moyenne un cycle menstruel ?",
-        answers: ["21 jours", "28 jours", "35 jours", "Cela varie selon chaque personne"],
-        correct: 3,
-        explanation: "Un cycle menstruel peut durer entre 21 et 35 jours. Bien que 28 jours soit souvent cité comme 'moyenne', il est important de comprendre que chaque corps est unique. L'irrégularité est courante, surtout pendant l'adolescence."
-      },
-      {
-        question: "Quelle quantité de sang est perdue pendant les règles ?",
-        answers: ["5-20ml", "30-40ml", "100-200ml", "Plus de 500ml"],
-        correct: 1,
-        explanation: "En moyenne, 30-40ml de sang sont perdus pendant les règles (soit environ 3-4 cuillères à soupe). Cette quantité peut sembler importante mais représente seulement 1% du sang total du corps. Une perte supérieure à 80ml est considérée comme abondante."
-      },
-      {
-        question: "Parmi ces affirmations sur les règles, laquelle est FAUSSE ?",
-        answers: [
-          "On peut faire du sport pendant ses règles",
-          "Les règles sont un processus naturel et sain",
-          "Il faut éviter de se laver les cheveux pendant ses règles",
-          "On peut nager pendant ses règles avec une protection adaptée"
-        ],
-        correct: 2,
-        explanation: "Il n'y a aucune restriction d'hygiène pendant les règles ! On peut se laver les cheveux, prendre des bains, faire du sport... Cette croyance est un mythe sans fondement scientifique. L'hygiène corporelle reste la même pendant les règles."
-      },
-      {
-        question: "Quel est le principal objectif de l'éducation menstruelle ?",
-        answers: ["Faire honte aux filles", "Informer et déstigmatiser", "Limiter les activités", "Créer des tabous"],
-        correct: 1,
-        explanation: "L'éducation menstruelle vise à informer tous les élèves (filles ET garçons) pour briser les tabous, lutter contre la stigmatisation et permettre à chacun·e de vivre cette réalité corporelle sereinement. C'est un enjeu d'égalité et de santé publique."
-      },
-      {
-        question: "Que se passe-t-il pendant la phase d'ovulation ?",
-        answers: ["L'ovaire libère un ovule", "L'endomètre se détache", "Les hormones s'arrêtent", "Le cycle recommence"],
-        correct: 0,
-        explanation: "L'ovulation correspond au moment où l'ovaire libère un ovule mature, généralement vers le 14ème jour d'un cycle de 28 jours. C'est la période de fertilité maximale. L'ovule peut être fécondé pendant environ 24h après sa libération."
-      },
-      {
-        question: "Quelle hormone est principalement responsable des règles douloureuses ?",
-        answers: ["L'œstrogène", "La progestérone", "Les prostaglandines", "L'insuline"],
-        correct: 2,
-        explanation: "Les prostaglandines sont des substances produites par l'endomètre qui provoquent les contractions utérines pour évacuer la muqueuse. Un excès de prostaglandines peut causer des douleurs menstruelles intenses (dysménorrhée)."
-      },
-      {
-        question: "Concernant le syndrome prémenstruel (SPM), quelle affirmation est vraie ?",
-        answers: ["Il n'existe pas vraiment", "Il touche 80% des personnes menstruées", "Il peut être soulagé par l'alimentation et l'exercice", "Il ne concerne que l'humeur"],
-        correct: 2,
-        explanation: "Le SPM touche environ 30-40% des personnes menstruées et se manifeste par des symptômes physiques et émotionnels. Une alimentation équilibrée, l'exercice régulier, la gestion du stress et parfois un suivi médical peuvent aider à le soulager."
-      }
-    ];
+const menstruationQuestions = [
+{
+question: "Quel est l'âge moyen des premières règles en France ?",
+answers: ["10 ans", "12-13 ans", "15 ans", "16 ans"],
+correct: 1,
+explanation: "L'âge moyen des premières règles (ménarche) en France est de 12-13 ans, mais il peut varier de 9 à 16 ans selon chaque personne. Cette variation est parfaitement normale et dépend de facteurs génétiques, nutritionnels et environnementaux."
+},
+{
+question: "Combien de temps dure en moyenne un cycle menstruel ?",
+answers: ["21 jours", "28 jours", "35 jours", "Cela varie selon chaque personne"],
+correct: 3,
+explanation: "Un cycle menstruel peut durer entre 21 et 35 jours. Bien que 28 jours soit souvent cité comme 'moyenne', il est important de comprendre que chaque corps est unique. L'irrégularité est courante, surtout pendant l'adolescence."
+},
+{
+question: "Quelle quantité de sang est perdue pendant les règles ?",
+answers: ["5-20ml", "30-40ml", "100-200ml", "Plus de 500ml"],
+correct: 1,
+explanation: "En moyenne, 30-40ml de sang sont perdus pendant les règles (soit environ 3-4 cuillères à soupe). Cette quantité peut sembler importante mais représente seulement 1% du sang total du corps. Une perte supérieure à 80ml est considérée comme abondante."
+},
+{
+question: "Parmi ces affirmations sur les règles, laquelle est FAUSSE ?",
+answers: [
+"On peut faire du sport pendant ses règles",
+"Les règles sont un processus naturel et sain",
+"Il faut éviter de se laver les cheveux pendant ses règles",
+"On peut nager pendant ses règles avec une protection adaptée"
+],
+correct: 2,
+explanation: "Il n'y a aucune restriction d'hygiène pendant les règles ! On peut se laver les cheveux, prendre des bains, faire du sport... Cette croyance est un mythe sans fondement scientifique. L'hygiène corporelle reste la même pendant les règles."
+},
+{
+question: "Quel est le principal objectif de l'éducation menstruelle ?",
+answers: ["Faire honte aux filles", "Informer et déstigmatiser", "Limiter les activités", "Créer des tabous"],
+correct: 1,
+explanation: "L'éducation menstruelle vise à informer tous les élèves (filles ET garçons) pour briser les tabous, lutter contre la stigmatisation et permettre à chacun·e de vivre cette réalité corporelle sereinement. C'est un enjeu d'égalité et de santé publique."
+},
+{
+question: "Que se passe-t-il pendant la phase d'ovulation ?",
+answers: ["L'ovaire libère un ovule", "L'endomètre se détache", "Les hormones s'arrêtent", "Le cycle recommence"],
+correct: 0,
+explanation: "L'ovulation correspond au moment où l'ovaire libère un ovule mature, généralement vers le 14ème jour d'un cycle de 28 jours. C'est la période de fertilité maximale. L'ovule peut être fécondé pendant environ 24h après sa libération."
+},
+{
+question: "Quelle hormone est principalement responsable des règles douloureuses ?",
+answers: ["L'œstrogène", "La progestérone", "Les prostaglandines", "L'insuline"],
+correct: 2,
+explanation: "Les prostaglandines sont des substances produites par l'endomètre qui provoquent les contractions utérines pour évacuer la muqueuse. Un excès de prostaglandines peut causer des douleurs menstruelles intenses (dysménorrhée)."
+},
+{
+question: "Concernant le syndrome prémenstruel (SPM), quelle affirmation est vraie ?",
+answers: ["Il n'existe pas vraiment", "Il touche 80% des personnes menstruées", "Il peut être soulagé par l'alimentation et l'exercice", "Il ne concerne que l'humeur"],
+correct: 2,
+explanation: "Le SPM touche environ 30-40% des personnes menstruées et se manifeste par des symptômes physiques et émotionnels. Une alimentation équilibrée, l'exercice régulier, la gestion du stress et parfois un suivi médical peuvent aider à le soulager."
+}
+];
 
-    const poilsQuestions = [
-      {
-        question: "Qu’est-ce qui explique principalement les différences de pilosité entre les personnes, indépendamment des pratiques d’épilation ou de rasage ?",
-        answers: [
-          "Surtout l’hygiène et la fréquence des douches",
-          "Principalement la génétique et les hormones",
-          "Les choix vestimentaires (types de vêtements portés)",
-          "Le climat dans lequel on a grandi"
-        ],
-        correct: 1,
-        explanation: "Les différences de pilosité (densité, répartition, épaisseur, vitesse de pousse) sont surtout liées à la génétique et aux hormones. Les pratiques comme l’épilation ou le rasage modifient l’apparence, mais pas ces caractéristiques de base."
-      },
-      {
-        question: "Quelle est la fonction principale des poils corporels ?",
-        answers: [
-          "Ils servent surtout à évacuer la transpiration",
-          "Protection et régulation thermique",
-          "Ils ont principalement un rôle social/esthétique",
-          "Ils empêchent les bactéries de se développer sur la peau"
-        ],
-        correct: 1,
-        explanation: "Les poils corporels ont plusieurs fonctions : protection de la peau contre les frottements, régulation de la température corporelle, et piégeage des phéromones. Ils sont un élément naturel et fonctionnel du corps humain."
-      },
-      {
-        question: "Concernant l'épilation/rasage, quelle affirmation est vraie ?",
-        answers: [
-          "C’est recommandé médicalement pour éviter la plupart des infections",
-          "Il n’y a pas d’obligation générale : c’est une question de préférence",
-          "C’est obligatoire pour limiter les odeurs corporelles",
-          "Il vaut mieux éviter avant la fin de la puberté (sinon les poils repoussent anormalement)"
-        ],
-        correct: 1,
-        explanation: "L'épilation ou le rasage est un choix personnel et esthétique. Il n'y a aucune obligation d'hygiène à s'épiler. Chacun·e est libre de garder ses poils naturels ou de les enlever selon ses préférences."
-      },
-      {
-        question: "Pourquoi y a-t-il souvent plus de pression sociale sur les filles concernant l'épilation ?",
-        answers: [
-          "Parce que les poils féminins sont biologiquement plus visibles et plus épais",
-          "À cause de stéréotypes de genre",
-          "Parce que l’épilation réduit forcément la transpiration",
-          "Parce que les produits d’épilation sont historiquement davantage commercialisés pour les femmes"
-        ],
-        correct: 1,
-        explanation: "La pression autour de l’épilation féminine vient surtout de stéréotypes de genre et de normes esthétiques construites socialement. Le marketing ou les habitudes de consommation en sont plutôt une conséquence qu’une cause."
-      },
-      {
-        question: "Quel message est important à retenir sur la pilosité corporelle ?",
-        answers: [
-          "Un corps sans poils est forcément plus sain",
-          "Il n’existe pas de norme universelle : chacun·e peut faire ses propres choix concernant son corps",
-          "Les poils indiquent un manque d’hygiène",
-          "Il faut suivre les tendances pour éviter le jugement"
-        ],
-        correct: 1,
-        explanation: "Il n’existe pas de modèle unique de corps « normal ». Avoir des poils ou non relève d’un choix personnel, et aucune option n’est supérieure à une autre. Le respect des choix et des différences est essentiel."
-      },
-      {
-        question: "Quelle hormone est principalement responsable de la croissance des poils ?",
-        answers: [
-          "L’œstrogène",
-          "La testostérone",
-          "Le cortisol (hormone du stress)",
-          "L’hormone de croissance"
-        ],
-        correct: 1,
-        explanation: "La testostérone (présente chez tous les genres, en quantités différentes) est l'hormone principale qui stimule la croissance des poils corporels pendant la puberté."
-      },
-      {
-        question: "Les poils des aisselles et du pubis ont-ils une fonction spécifique ?",
-        answers: [
-          "Non : ils sont uniquement un “reste” de l’évolution sans rôle actuel",
-          "Oui, ils protègent des frottements",
-          "Oui, ils empêchent totalement les odeurs",
-          "Oui, ils servent surtout à refroidir la zone en évacuant la chaleur par la transpiration"
-        ],
-        correct: 1,
-        explanation: "Ces poils ont une fonction protectrice : ils réduisent les frottements dans ces zones sensibles, et peuvent retenir des signaux chimiques (phéromones)."
-      },
-      {
-        question: "Dans l'histoire, comment la pilosité féminine était-elle perçue ?",
-        answers: [
-          "Toujours considérée comme laide, sans exception",
-          "Variable selon les époques et cultures",
-          "Toujours épilée : c’était la norme universelle",
-          "Considérée comme un signe de maladie dans la plupart des sociétés"
-        ],
-        correct: 1,
-        explanation: "La perception de la pilosité féminine a énormément varié selon les époques et les cultures. L’idée d’une obligation d’épilation est relativement récente et n’est pas universelle."
-      }
-    ];
+const poilsQuestions = [
+{
+question: "Qu’est-ce qui explique principalement les différences de pilosité entre les personnes, indépendamment des pratiques d’épilation ou de rasage ?",
+answers: [
+"Surtout l’hygiène et la fréquence des douches",
+"Principalement la génétique et les hormones",
+"Les choix vestimentaires (types de vêtements portés)",
+"Le climat dans lequel on a grandi"
+],
+correct: 1,
+explanation: "Les différences de pilosité (densité, répartition, épaisseur, vitesse de pousse) sont surtout liées à la génétique et aux hormones. Les pratiques comme l’épilation ou le rasage modifient l’apparence, mais pas ces caractéristiques de base."
+},
+{
+question: "Quelle est la fonction principale des poils corporels ?",
+answers: [
+"Ils servent surtout à évacuer la transpiration",
+"Protection et régulation thermique",
+"Ils ont principalement un rôle social/esthétique",
+"Ils empêchent les bactéries de se développer sur la peau"
+],
+correct: 1,
+explanation: "Les poils corporels ont plusieurs fonctions : protection de la peau contre les frottements, régulation de la température corporelle, et piégeage des phéromones. Ils sont un élément naturel et fonctionnel du corps humain."
+},
+{
+question: "Concernant l'épilation/rasage, quelle affirmation est vraie ?",
+answers: [
+"C’est recommandé médicalement pour éviter la plupart des infections",
+"Il n’y a pas d’obligation générale : c’est une question de préférence",
+"C’est obligatoire pour limiter les odeurs corporelles",
+"Il vaut mieux éviter avant la fin de la puberté (sinon les poils repoussent anormalement)"
+],
+correct: 1,
+explanation: "L'épilation ou le rasage est un choix personnel et esthétique. Il n'y a aucune obligation d'hygiène à s'épiler. Chacun·e est libre de garder ses poils naturels ou de les enlever selon ses préférences."
+},
+{
+question: "Pourquoi y a-t-il souvent plus de pression sociale sur les filles concernant l'épilation ?",
+answers: [
+"Parce que les poils féminins sont biologiquement plus visibles et plus épais",
+"À cause de stéréotypes de genre",
+"Parce que l’épilation réduit forcément la transpiration",
+"Parce que les produits d’épilation sont historiquement davantage commercialisés pour les femmes"
+],
+correct: 1,
+explanation: "La pression autour de l’épilation féminine vient surtout de stéréotypes de genre et de normes esthétiques construites socialement. Le marketing ou les habitudes de consommation en sont plutôt une conséquence qu’une cause."
+},
+{
+question: "Quel message est important à retenir sur la pilosité corporelle ?",
+answers: [
+"Un corps sans poils est forcément plus sain",
+"Il n’existe pas de norme universelle : chacun·e peut faire ses propres choix concernant son corps",
+"Les poils indiquent un manque d’hygiène",
+"Il faut suivre les tendances pour éviter le jugement"
+],
+correct: 1,
+explanation: "Il n’existe pas de modèle unique de corps « normal ». Avoir des poils ou non relève d’un choix personnel, et aucune option n’est supérieure à une autre. Le respect des choix et des différences est essentiel."
+},
+{
+question: "Quelle hormone est principalement responsable de la croissance des poils ?",
+answers: [
+"L’œstrogène",
+"La testostérone",
+"Le cortisol (hormone du stress)",
+"L’hormone de croissance"
+],
+correct: 1,
+explanation: "La testostérone (présente chez tous les genres, en quantités différentes) est l'hormone principale qui stimule la croissance des poils corporels pendant la puberté."
+},
+{
+question: "Les poils des aisselles et du pubis ont-ils une fonction spécifique ?",
+answers: [
+"Non : ils sont uniquement un “reste” de l’évolution sans rôle actuel",
+"Oui, ils protègent des frottements",
+"Oui, ils empêchent totalement les odeurs",
+"Oui, ils servent surtout à refroidir la zone en évacuant la chaleur par la transpiration"
+],
+correct: 1,
+explanation: "Ces poils ont une fonction protectrice : ils réduisent les frottements dans ces zones sensibles, et peuvent retenir des signaux chimiques (phéromones)."
+},
+{
+question: "Dans l'histoire, comment la pilosité féminine était-elle perçue ?",
+answers: [
+"Toujours considérée comme laide, sans exception",
+"Variable selon les époques et cultures",
+"Toujours épilée : c’était la norme universelle",
+"Considérée comme un signe de maladie dans la plupart des sociétés"
+],
+correct: 1,
+explanation: "La perception de la pilosité féminine a énormément varié selon les époques et les cultures. L’idée d’une obligation d’épilation est relativement récente et n’est pas universelle."
+}
+];
 
-    function selectMode(mode){
-      currentMode = mode;
-      currentQuestionIndex = 0;
-      userAnswers = [];
-      score = 0;
+/* Nouveau quiz : éducation genrée (format discussion) */
+const reglesQuestions = [
+{
+question: "Un enfant tombe et pleure. Sans autre information, quelle interprétation est la plus fréquente dans la société quand on pense que c’est…",
+answers: [
+"…une fille : “elle a peur” / …un garçon : “il est en colère”",
+"…une fille : “il est en colère” / …un garçon : “il a peur”",
+"…une fille : “il se fait remarquer” / …un garçon : “il est timide”",
+"On interprète toujours exactement de la même façon"
+],
+correct: 0,
+explanation: "Quand on attribue un genre, on a tendance à changer notre lecture : la peur est plus “autorisée” chez les filles, la colère plus “tolérée” chez les garçons. Ce n’est pas naturel : c’est un réflexe social (idée proche des travaux de Condry & Condry)."
+},
+{
+question: "À qui dit-on le plus souvent “Fais attention !” quand il/elle grimpe, court, prend des risques ?",
+answers: [
+"Plutôt aux filles",
+"Plutôt aux garçons",
+"À tout le monde pareil",
+"Seulement aux plus jeunes"
+],
+correct: 0,
+explanation: "On protège souvent davantage les filles et on encourage davantage les garçons à “oser”. À force, cela peut construire plus d’assurance chez certains, plus de prudence ou d’auto-censure chez d’autres."
+},
+{
+question: "Quelle phrase est la plus susceptible d’être adressée à un garçon ?",
+answers: [
+“Sois sage.”",
+“Arrête de pleurer.”",
+“Tu es jolie aujourd’hui.”",
+“Tu as été très discrète.”"
+],
+correct: 1,
+explanation: "L’injonction “un garçon ne pleure pas” (ou “arrête de pleurer”) est très répandue : elle n’empêche pas de ressentir, mais elle apprend à cacher les émotions."
+},
+{
+question: "Quel compliment est le plus souvent donné aux filles à l’école (même quand elles ont de bons résultats) ?",
+answers: [
+“Tu es brillante.”",
+“Tu as du talent.”",
+“Tu es sérieuse / appliquée.”",
+“Tu es audacieuse.”"
+],
+correct: 2,
+explanation: "Les filles sont souvent valorisées pour la “sérieux·se”, l’application, la conformité. Les garçons sont plus facilement valorisés pour l’audace ou la “brillance”. Ces différences, répétées, influencent la confiance et l’orientation."
+},
+{
+question: "Les jouets et activités proposés aux enfants…",
+answers: [
+"Sont neutres : ils n’ont pas d’effet",
+"Orientent vers des rôles et des compétences différentes",
+"Sont uniquement une question de goûts individuels",
+"N’influencent que l’enfance, pas la suite"
+],
+correct: 1,
+explanation: "Poupées/dînette (soin, intérieur) vs construction/voitures (action, technique) : ce n’est pas “mal”, mais cela peut orienter les compétences valorisées et ce que l’enfant s’autorise à aimer."
+},
+{
+question: "À notes équivalentes, pourquoi certaines filles hésitent davantage à choisir une filière très sélective ?",
+answers: [
+"Parce qu’elles aiment moins travailler",
+"Parce qu’elles manquent forcément de capacités",
+"À cause de l’auto-censure et du sentiment de légitimité",
+"Parce que les filières sélectives n’existent pas pour elles"
+],
+correct: 2,
+explanation: "L’auto-censure, c’est se limiter avant même d’essayer (“je ne suis pas sûre”, “je ne suis pas faite pour ça”). Ce n’est pas une fatalité : c’est souvent lié aux attentes, aux modèles et à la confiance construite."
+},
+{
+question: "Parmi ces affirmations, laquelle est la plus juste ?",
+answers: [
+“Les stéréotypes sont inoffensifs : c’est juste de l’humour.”",
+“Les stéréotypes influencent nos choix même quand on pense être libre.”",
+“Les stéréotypes ne concernent que les filles.”",
+“Les stéréotypes disparaissent à l’adolescence.”"
+],
+correct: 1,
+explanation: "Les stéréotypes peuvent agir comme des “petites règles” invisibles : ils influencent les goûts, les émotions autorisées, la place qu’on prend, et même les choix d’orientation."
+},
+{
+question: "Quand une fille “prend de la place” (parle fort, s’impose), elle est plus souvent qualifiée de…",
+answers: [
+“Leader”",
+“Autoritaire / agaçante”",
+“Drôle”",
+“Courageuse”
+],
+correct: 1,
+explanation: "Le même comportement peut être jugé différemment selon le genre. Repérer ces doubles standards aide à comprendre comment se construisent la conformité et l’auto-censure."
+},
+{
+question: "Quelle situation illustre le mieux une “règle implicite” (non écrite) ?",
+answers: [
+“Les règles du collège sont affichées à l’entrée.”",
+“On attend qu’un garçon fasse le premier pas.”",
+“Un contrôle surprise est annoncé la veille.”",
+“Un professeur donne une consigne sur la feuille.”"
+],
+correct: 1,
+explanation: "Une règle implicite, c’est une attente sociale non écrite, mais très présente. Les règles implicites sur le genre peuvent peser sur les comportements, les relations et l’estime de soi."
+},
+{
+question: "À la fin, l’objectif de ce quiz est surtout de…",
+answers: [
+“Prouver que tout le monde se trompe”",
+“Faire la morale”,
+“Repérer des réflexes et en discuter sans juger”,
+“Donner des leçons de vocabulaire”
+],
+correct: 2,
+explanation: "Le but est de mettre en lumière des réflexes sociaux et d’en discuter : comprendre comment on devient “fille” ou “garçon” selon les attentes, pour mieux s’autoriser à choisir et à être soi-même."
+}
+];
 
-      document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelector(`.mode-btn.${mode}`).classList.add('active');
+function selectMode(mode){
+currentMode = mode;
+currentQuestionIndex = 0;
+userAnswers = [];
+score = 0;
 
-      questions = mode === 'menstruation' ? menstruationQuestions : poilsQuestions;
+document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+document.querySelector(`.mode-btn.${mode}`).classList.add('active');
 
-      document.getElementById('finalScore').classList.remove('show');
+questions =
+mode === 'menstruation' ? menstruationQuestions :
+mode === 'poils' ? poilsQuestions :
+reglesQuestions;
 
-      displayQuestion();
-      updateProgress();
-      updateNavigation();
-    }
+document.getElementById('finalScore').classList.remove('show');
 
-    function displayQuestion(){
-      const container = document.getElementById('questionsContainer');
-      const question = questions[currentQuestionIndex];
+displayQuestion();
+updateProgress();
+updateNavigation();
+}
 
-      container.innerHTML = `
-        <div class="question-card active">
-          <div class="question">${question.question}</div>
-          <div class="answers">
-            ${question.answers.map((answer, index) =>
-              `<div class="answer" onclick="selectAnswer(${index})">${answer}</div>`
-            ).join('')}
-          </div>
-          <div class="explanation" id="explanation">
-            <h4>💡 Explication :</h4>
-            <p>${question.explanation}</p>
-          </div>
-        </div>
-      `;
+function displayQuestion(){
+const container = document.getElementById('questionsContainer');
+const question = questions[currentQuestionIndex];
 
-      if (userAnswers[currentQuestionIndex] !== undefined) {
-        selectAnswer(userAnswers[currentQuestionIndex]);
-      }
-    }
+container.innerHTML = `
+<div class="question-card active">
+<div class="question">${question.question}</div>
+<div class="answers">
+${question.answers.map((answer, index) =>
+`<div class="answer" onclick="selectAnswer(${index})">${answer}</div>`
+).join('')}
+</div>
+<div class="explanation" id="explanation">
+<h4>💡 Explication :</h4>
+<p>${question.explanation}</p>
+</div>
+</div>
+`;
 
-    function recomputeScore(){
-      score = 0;
-      for (let i = 0; i < questions.length; i++){
-        if (userAnswers[i] !== undefined && userAnswers[i] === questions[i].correct) score++;
-      }
-    }
+if (userAnswers[currentQuestionIndex] !== undefined) {
+selectAnswer(userAnswers[currentQuestionIndex]);
+}
+}
 
-    function selectAnswer(answerIndex){
-      const question = questions[currentQuestionIndex];
-      const answers = document.querySelectorAll('.answer');
-      const explanation = document.getElementById('explanation');
+function recomputeScore(){
+score = 0;
+for (let i = 0; i < questions.length; i++){
+if (userAnswers[i] !== undefined && userAnswers[i] === questions[i].correct) score++;
+}
+}
 
-      userAnswers[currentQuestionIndex] = answerIndex;
-      recomputeScore();
+function selectAnswer(answerIndex){
+const question = questions[currentQuestionIndex];
+const answers = document.querySelectorAll('.answer');
+const explanation = document.getElementById('explanation');
 
-      answers.forEach(a => a.style.pointerEvents = 'none');
+userAnswers[currentQuestionIndex] = answerIndex;
+recomputeScore();
 
-      answers.forEach((a, idx) => {
-        if (idx === question.correct) a.classList.add('correct');
-        else if (idx === answerIndex && idx !== question.correct) a.classList.add('incorrect');
-      });
+answers.forEach(a => a.style.pointerEvents = 'none');
 
-      explanation.classList.add('show');
+answers.forEach((a, idx) => {
+if (idx === question.correct) a.classList.add('correct');
+else if (idx === answerIndex && idx !== question.correct) a.classList.add('incorrect');
+});
 
-      updateNavigation();
-      updateProgress();
-    }
+explanation.classList.add('show');
 
-    function nextQuestion(){
-      if (currentQuestionIndex < questions.length - 1){
-        currentQuestionIndex++;
-        displayQuestion();
-        updateNavigation();
-        updateProgress();
-      } else {
-        showFinalScore();
-      }
-    }
+updateNavigation();
+updateProgress();
+}
 
-    function previousQuestion(){
-      if (currentQuestionIndex > 0){
-        currentQuestionIndex--;
-        displayQuestion();
-        updateNavigation();
-        updateProgress();
-      }
-    }
+function nextQuestion(){
+if (currentQuestionIndex < questions.length - 1){
+currentQuestionIndex++;
+displayQuestion();
+updateNavigation();
+updateProgress();
+} else {
+showFinalScore();
+}
+}
 
-    function updateProgress(){
-      if (questions.length === 0) return;
+function previousQuestion(){
+if (currentQuestionIndex > 0){
+currentQuestionIndex--;
+displayQuestion();
+updateNavigation();
+updateProgress();
+}
+}
 
-      const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
-      document.getElementById('progressFill').style.width = `${progress}%`;
-      document.getElementById('questionCounter').textContent = `Question ${currentQuestionIndex + 1}/${questions.length}`;
+function updateProgress(){
+if (questions.length === 0) return;
 
-      const answeredCount = userAnswers.slice(0, currentQuestionIndex + 1).filter(v => v !== undefined).length;
-      const correctSoFar = userAnswers.slice(0, currentQuestionIndex + 1).reduce((acc, ans, i) => {
-        if (ans !== undefined && ans === questions[i].correct) return acc + 1;
-        return acc;
-      }, 0);
+const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+document.getElementById('progressFill').style.width = `${progress}%`;
+document.getElementById('questionCounter').textContent = `Question ${currentQuestionIndex + 1}/${questions.length}`;
 
-      document.getElementById('scoreDisplay').textContent = `Score: ${correctSoFar}/${Math.max(1, answeredCount)}`;
-    }
+const answeredCount = userAnswers.slice(0, currentQuestionIndex + 1).filter(v => v !== undefined).length;
+const correctSoFar = userAnswers.slice(0, currentQuestionIndex + 1).reduce((acc, ans, i) => {
+if (ans !== undefined && ans === questions[i].correct) return acc + 1;
+return acc;
+}, 0);
 
-    function updateNavigation(){
-      const prevBtn = document.getElementById('prevBtn');
-      const nextBtn = document.getElementById('nextBtn');
+document.getElementById('scoreDisplay').textContent = `Score: ${correctSoFar}/${Math.max(1, answeredCount)}`;
+}
 
-      prevBtn.disabled = currentQuestionIndex === 0 || questions.length === 0;
+function updateNavigation(){
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
 
-      if (questions.length === 0){
-        nextBtn.disabled = true;
-        nextBtn.textContent = 'Suivant →';
-      } else if (userAnswers[currentQuestionIndex] === undefined){
-        nextBtn.disabled = true;
-        nextBtn.textContent = 'Suivant →';
-      } else if (currentQuestionIndex === questions.length - 1){
-        nextBtn.disabled = false;
-        nextBtn.textContent = 'Voir le score →';
-      } else {
-        nextBtn.disabled = false;
-        nextBtn.textContent = 'Suivant →';
-      }
-    }
+prevBtn.disabled = currentQuestionIndex === 0 || questions.length === 0;
 
-    function showFinalScore(){
-      recomputeScore();
+if (questions.length === 0){
+nextBtn.disabled = true;
+nextBtn.textContent = 'Suivant →';
+} else if (userAnswers[currentQuestionIndex] === undefined){
+nextBtn.disabled = true;
+nextBtn.textContent = 'Suivant →';
+} else if (currentQuestionIndex === questions.length - 1){
+nextBtn.disabled = false;
+nextBtn.textContent = 'Voir le score →';
+} else {
+nextBtn.disabled = false;
+nextBtn.textContent = 'Suivant →';
+}
+}
 
-      const finalScoreEl = document.getElementById('finalScore');
-      const finalTitle = document.getElementById('finalTitle');
-      const finalMessage = document.getElementById('finalMessage');
+function showFinalScore(){
+recomputeScore();
 
-      const wrong = questions.length - score;
-      const percentage = Math.round((score / questions.length) * 100);
+const finalScoreEl = document.getElementById('finalScore');
+const finalTitle = document.getElementById('finalTitle');
+const finalMessage = document.getElementById('finalMessage');
 
-      finalTitle.textContent = (wrong <= 1) ? "🎉 Félicitations ! 🎉" : "📊 Résultats";
+const wrong = questions.length - score;
+const percentage = Math.round((score / questions.length) * 100);
 
-      let message = `Tu as obtenu ${score}/${questions.length} (${percentage}%) !<br><br>`;
+finalTitle.textContent = (wrong <= 1) ? "🎉 Félicitations ! 🎉" : "📊 Résultats";
 
-      if (percentage >= 90){
-        message += "🏆 Très solide ! Tu es presque incollable sur le sujet — et ça aide vraiment à démystifier ces thèmes.";
-      } else if (percentage >= 75){
-        message += "🌟 Très bien ! Tu maîtrises bien le sujet. Continue à partager ces infos pour briser les tabous.";
-      } else if (percentage >= 50){
-        message += "👍 Bien joué ! Tu as de bonnes bases. Quelques révisions et tu seras au top.";
-      } else if (percentage >= 25){
-        message += "📚 Il y a encore des notions à approfondir. Ces sujets valent le coup d’être mieux compris.";
-      } else {
-        message += "🔍 C’est peut-être nouveau pour toi : parfait pour apprendre, poser des questions et démêler les idées reçues !";
-      }
+let message = `Tu as obtenu ${score}/${questions.length} (${percentage}%) !<br><br>`;
 
-      finalMessage.innerHTML = message;
-      finalScoreEl.classList.add('show');
+if (percentage >= 90){
+message += "🏆 Très solide ! Tu es presque incollable sur le sujet — et ça aide vraiment à démystifier ces thèmes.";
+} else if (percentage >= 75){
+message += "🌟 Très bien ! Tu maîtrises bien le sujet. Continue à partager ces infos pour briser les tabous.";
+} else if (percentage >= 50){
+message += "👍 Bien joué ! Tu as de bonnes bases. Quelques révisions et tu seras au top.";
+} else if (percentage >= 25){
+message += "📚 Il y a encore des notions à approfondir. Ces sujets valent le coup d’être mieux compris.";
+} else {
+message += "🔍 C’est peut-être nouveau pour toi : parfait pour apprendre, poser des questions et démêler les idées reçues !";
+}
 
-      const review = document.getElementById('reviewContainer');
-      review.style.display = 'none';
-      review.innerHTML = '';
+finalMessage.innerHTML = message;
+finalScoreEl.classList.add('show');
 
-      document.getElementById('questionsContainer').style.display = 'none';
-      document.querySelector('.navigation').style.display = 'none';
-    }
+const review = document.getElementById('reviewContainer');
+review.style.display = 'none';
+review.innerHTML = '';
 
-    function buildReviewHTML(){
-      return questions.map((q, i) => {
-        const userIndex = userAnswers[i];
-        const userText = (userIndex === undefined) ? "— (pas de réponse)" : q.answers[userIndex];
-        const correctText = q.answers[q.correct];
-        const isCorrect = userIndex === q.correct;
-        const badge = isCorrect ? "✅" : "❌";
+document.getElementById('questionsContainer').style.display = 'none';
+document.querySelector('.navigation').style.display = 'none';
+}
 
-        return `
-          <div style="background: rgba(255,255,255,0.12); padding:12px; border-radius:10px; margin-bottom:10px;">
-            <div style="font-weight:900; margin-bottom:6px;">${badge} Question ${i+1} : ${q.question}</div>
-            <div><strong>Ta réponse :</strong> ${userText}</div>
-            <div><strong>Bonne réponse :</strong> ${correctText}</div>
-            <div style="margin-top:6px; opacity:0.95;"><strong>Explication :</strong> ${q.explanation}</div>
-          </div>
-        `;
-      }).join('');
-    }
+function buildReviewHTML(){
+return questions.map((q, i) => {
+const userIndex = userAnswers[i];
+const userText = (userIndex === undefined) ? "— (pas de réponse)" : q.answers[userIndex];
+const correctText = q.answers[q.correct];
+const isCorrect = userIndex === q.correct;
+const badge = isCorrect ? "✅" : "❌";
 
-    function toggleReview(){
-      const review = document.getElementById('reviewContainer');
-      if (review.style.display === 'none'){
-        review.innerHTML = buildReviewHTML();
-        review.style.display = 'block';
-      } else {
-        review.style.display = 'none';
-      }
-    }
+return `
+<div style="background: rgba(255,255,255,0.12); padding:12px; border-radius:10px; margin-bottom:10px;">
+<div style="font-weight:900; margin-bottom:6px;">${badge} Question ${i+1} : ${q.question}</div>
+<div><strong>Ta réponse :</strong> ${userText}</div>
+<div><strong>Bonne réponse :</strong> ${correctText}</div>
+<div style="margin-top:6px; opacity:0.95;"><strong>Explication :</strong> ${q.explanation}</div>
+</div>
+`;
+}).join('');
+}
 
-    function restartGame(){
-      document.getElementById('finalScore').classList.remove('show');
-      document.getElementById('questionsContainer').style.display = 'block';
-      document.querySelector('.navigation').style.display = 'flex';
-      selectMode(currentMode);
-    }
+function toggleReview(){
+const review = document.getElementById('reviewContainer');
+if (review.style.display === 'none'){
+review.innerHTML = buildReviewHTML();
+review.style.display = 'block';
+} else {
+review.style.display = 'none';
+}
+}
 
-    updateNavigation();
+function restartGame(){
+document.getElementById('finalScore').classList.remove('show');
+document.getElementById('questionsContainer').style.display = 'block';
+document.querySelector('.navigation').style.display = 'flex';
+selectMode(currentMode);
+}
 
-    let lastTouchEnd = 0;
-    document.addEventListener('touchend', function(event){
-      const now = (new Date()).getTime();
-      if (now - lastTouchEnd <= 300) event.preventDefault();
-      lastTouchEnd = now;
-    }, false);
-  </script>
+updateNavigation();
+
+let lastTouchEnd = 0;
+document.addEventListener('touchend', function(event){
+const now = (new Date()).getTime();
+if (now - lastTouchEnd <= 300) event.preventDefault();
+lastTouchEnd = now;
+}, false);
+</script>
 </body>
 </html>
