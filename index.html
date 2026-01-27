@@ -164,11 +164,11 @@ background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
 color: white;
 }
 
-/* Nouveau thème */
 .mode-btn.regles{
 background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);
 color: white;
 }
+
 
 .mode-btn:active{ transform: scale(0.985); filter: brightness(0.98); }
 
@@ -404,7 +404,7 @@ body{ padding: 5px; font-size: 15px; }
 .header h1{ font-size: 1.35em; margin-bottom: 5px; }
 .subtitle{ font-size: 0.9em; }
 .game-content{ padding: 15px; }
-.mode-selector{ flex-direction: row; flex-wrap: wrap; }
+.mode-selector{ flex-direction: row; }
 .mode-btn{ min-height: 50px; font-size: 0.95em; flex: 1; }
 .header-waves{ height: 70px; }
 }
@@ -613,7 +613,6 @@ explanation: "La perception de la pilosité féminine a énormément varié selo
 }
 ];
 
-/* Nouveau quiz : éducation genrée (format discussion) */
 const reglesQuestions = [
 {
 question: "Un enfant tombe et pleure. Sans autre information, quelle interprétation est la plus fréquente dans la société quand on pense que c’est…",
@@ -624,7 +623,7 @@ answers: [
 "On interprète toujours exactement de la même façon"
 ],
 correct: 0,
-explanation: "Quand on attribue un genre, on a tendance à changer notre lecture : la peur est plus “autorisée” chez les filles, la colère plus “tolérée” chez les garçons. Ce n’est pas naturel : c’est un réflexe social (idée proche des travaux de Condry & Condry)."
+explanation: "Quand on attribue un genre, on a tendance à changer notre lecture : la peur est plus « autorisée » chez les filles, la colère plus « tolérée » chez les garçons. Ce n’est pas naturel : c’est un réflexe social (idée proche des travaux de Condry & Condry)."
 },
 {
 question: "À qui dit-on le plus souvent « Fais attention ! » quand il/elle grimpe, court, prend des risques ?",
@@ -635,7 +634,7 @@ answers: [
 "Seulement aux plus jeunes"
 ],
 correct: 0,
-explanation: "On protège souvent davantage les filles et on encourage davantage les garçons à “oser”. À force, cela peut construire plus d’assurance chez certains, plus de prudence ou d’auto-censure chez d’autres."
+explanation: "On protège souvent davantage les filles et on encourage davantage les garçons à « oser ». À force, cela peut construire plus d’assurance chez certains, plus de prudence ou d’auto-censure chez d’autres."
 },
 {
 question: "Quelle phrase est la plus susceptible d’être adressée à un garçon ?",
@@ -643,7 +642,7 @@ answers: [
 "« Sois sage. »",
 "« Arrête de pleurer. »",
 "« Tu es jolie aujourd’hui. »",
-"« Tu as été très discrète. »"
+"« Tu as été très discret/discrète. »"
 ],
 correct: 1,
 explanation: "L’injonction « un garçon ne pleure pas » (ou « arrête de pleurer ») est très répandue : elle n’empêche pas de ressentir, mais elle apprend à cacher les émotions."
@@ -657,7 +656,7 @@ answers: [
 "« Tu es audacieuse. »"
 ],
 correct: 2,
-explanation: "Les filles sont souvent valorisées pour le “sérieux”, l’application, la conformité. Les garçons sont plus facilement valorisés pour l’audace ou la “brillance”. Ces différences, répétées, influencent la confiance et l’orientation."
+explanation: "Les filles sont souvent valorisées pour le « sérieux », l’application, la conformité. Les garçons sont plus facilement valorisés pour l’audace ou la « brillance ». Ces différences, répétées, influencent la confiance et l’orientation."
 },
 {
 question: "Les jouets et activités proposés aux enfants…",
@@ -668,7 +667,7 @@ answers: [
 "N’influencent que l’enfance, pas la suite"
 ],
 correct: 1,
-explanation: "Poupées/dînette (soin, intérieur) vs construction/voitures (action, technique) : ce n’est pas “mal”, mais cela peut orienter les compétences valorisées et ce que l’enfant s’autorise à aimer."
+explanation: "Poupées/dînette (soin, intérieur) vs construction/voitures (action, technique) : ce n’est pas « mal », mais cela peut orienter les compétences valorisées et ce que l’enfant s’autorise à aimer."
 },
 {
 question: "À notes équivalentes, pourquoi certaines filles hésitent davantage à choisir une filière très sélective ?",
@@ -690,7 +689,7 @@ answers: [
 "« Les stéréotypes disparaissent à l’adolescence. »"
 ],
 correct: 1,
-explanation: "Les stéréotypes peuvent agir comme des “petites règles” invisibles : ils influencent les goûts, les émotions autorisées, la place qu’on prend, et même les choix d’orientation."
+explanation: "Les stéréotypes peuvent agir comme des « petites règles » invisibles : ils influencent les goûts, les émotions autorisées, la place qu’on prend, et même les choix d’orientation."
 },
 {
 question: "Quand une fille « prend de la place » (parle fort, s’impose), elle est plus souvent qualifiée de…",
@@ -723,9 +722,8 @@ answers: [
 "« Donner des leçons de vocabulaire »"
 ],
 correct: 2,
-explanation: "Le but est de mettre en lumière des réflexes sociaux et d’en discuter : comprendre comment on devient “fille” ou “garçon” selon les attentes, pour mieux s’autoriser à choisir et à être soi-même."
+explanation: "Le but est de mettre en lumière des réflexes sociaux et d’en discuter : comprendre comment on devient « fille » ou « garçon » selon les attentes, pour mieux s’autoriser à choisir et à être soi-même."
 }
-];
 ];
 
 function selectMode(mode){
@@ -737,10 +735,7 @@ score = 0;
 document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
 document.querySelector(`.mode-btn.${mode}`).classList.add('active');
 
-questions =
-mode === 'menstruation' ? menstruationQuestions :
-mode === 'poils' ? poilsQuestions :
-reglesQuestions;
+questions = mode === 'menstruation' ? menstruationQuestions : (mode === 'poils' ? poilsQuestions : reglesQuestions);
 
 document.getElementById('finalScore').classList.remove('show');
 
